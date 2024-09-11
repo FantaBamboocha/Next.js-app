@@ -14,6 +14,8 @@ export default function Search({ placeholder }: { placeholder: string }) {
     debounce((value: string) => {
       const params = new URLSearchParams(searchParams);
 
+      params.set("page", "1");
+
       if (value) {
         params.set("search", value);
       } else {
@@ -21,7 +23,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
       }
 
       router.replace(`${pathname}?${params.toString()}`);
-    }, 700),
+    }, 500),
     []
   );
 
